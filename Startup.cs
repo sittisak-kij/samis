@@ -7,13 +7,18 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using samis.Data;
 
 namespace samis
 {
     public class Startup
     {
+        private const string V = "Server=localhost;Database=samis;User=root;Password=p@ssw0rd;";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,7 +36,14 @@ namespace samis
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContextPool<SamisDbContext>(
+                options => options.UseMySql(V, // replace with your Connection String
+                    mySqlOptions =>
+                        {
+                            mySqlOptions.ServerVersion(new Version(5, 7, 17), ServerType.MySql); // replace with your Server Version and Type
+                        }
+            ));
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
