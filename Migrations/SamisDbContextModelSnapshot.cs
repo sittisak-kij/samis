@@ -100,7 +100,13 @@ namespace samis.Migrations
 
                     b.Property<int>("advisorPositionId");
 
+                    b.Property<string>("email");
+
+                    b.Property<string>("lineID");
+
                     b.Property<string>("name");
+
+                    b.Property<string>("phoneNumber");
 
                     b.HasKey("advisorId");
 

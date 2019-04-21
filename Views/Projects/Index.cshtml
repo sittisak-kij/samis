@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<div class="flex-container">
+    <div style="flex-grow: 1"><h4><b>PROJECTS</b></h4></div>
+    <div style="flex-grow: 1"><h6 style="text-align: right">VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png" width="30" height="30"/></h6></div>
+</div>
+
+<a asp-controller="Projects" asp-action="Details" asp-route-id="1" style="text-decoration:none; color: inherit">
+    <div style="margin: 16px">
+        <div class="card">
+            <div class="card-container">
+                <div class="flex-container">
+                    <div style="flex-grow: 1"><span class="complete-dot"></span> <b>S2019090096</b> GRADUATING STUDENT ORIENTATION</div>
+                    <div style="flex-grow: 3"><h6 style="text-align: right">PROPOSED ON:   1  April  2019</h6></div>
+                </div>
+                <div class="flex-container" style="margin-top: 16px">
+                    <div style="flex-grow: 1">Proposed Budget: ฿14,450</div>
+                    <div style="flex-grow: 1">Approved Budget: Pending</div>
+                    <div style="flex-grow: 1">Actual Budget: Pending</div>
+                    <div style="flex-grow: 3">
+                        <div style="float: right">
+                            <img src="~/img/ic_edit.png" width="26" height="26" /> Edit
+                            <img src="~/img/ic_delete.png" width="26" height="26" /> Delete
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>
+
+<div class="flex-container" style="margin-top: 30px">
+    <div style="flex-grow: 1"><a class="complete-dot"></a>	&nbsp; COMPLETED PROJECT</div>
+    <div style="flex-grow: 1"><a class="ongoing-dot"></a>	&nbsp; ONGOING PROJECT</div>
+    <div style="flex-grow: 1"><a class="rejected-dot"></a>	&nbsp; REJECTED PROJECT</div>
+    <div style="flex-grow: 20"></div>
+</div>

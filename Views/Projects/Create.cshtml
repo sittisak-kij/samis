@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "Create Project";
+}
+
+<div class="flex-container">
+    <div style="flex-grow: 1"><h4><b>CREATE PROJECT</b></h4></div>
+    <div style="flex-grow: 1"><h6 style="text-align: right">VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png" width="30" height="30" /></h6></div>
+</div>
+
+@model samis.Models.ActivityInformation
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="flex-container" style="margin-top: 16px">
+    <div style="flex-grow: 1"><h3><b><input class="form-control" type="text" style="width: 80%; height: 50%" placeholder="PROJECT NAME" /></b></h3></div>
+    <div style="flex-grow: 1"><h6 style="text-align: right">S2019090096</h6></div>
+</div>
+
+<table style="width: 100%; margin-top: 16px">
+    <tr>
+        <td><b>Project Type: </b></td>
+        <td>
+            <select id="inputState" class="form-control" style="width: 80%;">
+                <option selected>Academic</option>
+                <option>Arts & Culture</option>
+                <option>Ideal Graduate</option>
+                <option>Procurement</option>
+            </select>
+        </td>
+        <td><b>Semester: </b></td>
+        <td>
+            <select id="inputState" class="form-control" style="width: 80%;">
+                <option selected>2/2018</option>
+                <option>3/2018</option>
+                <option>1/2019</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><b>Project Level: </b></td>
+        <td>
+            <select id="inputState" class="form-control" style="width: 80%;">
+                <option selected>Institutional</option>
+                <option>Inter-collegiate</option>
+                <option>Regional</option>
+                <option>National</option>
+            </select>
+        </td>
+        <td><b>Started Date: </b></td>
+        <td><input class="form-control" type="date" style="width: 80%; height: 50%" /></td>
+    </tr>
+    <tr>
+        <td><b>Venue: </b></td>
+        <td><input class="form-control" type="text" style="width: 80%; height: 50%" /></td>
+        <td><b>Ended Date: </b></td>
+        <td><input class="form-control" type="date" style="width: 80%; height: 50%" /></td>
+    </tr>
+    <tr>
+        <td><b>Advisor: </b></td>
+        <td>A. Sakhon Ounla</td>
+        <td><b>Participants: </b></td>
+        <td><input class="form-control" type="text" style="width: 80%; height: 50%" /></td>
+    </tr>
+</table>
+
+<table style="width: 100%; margin-top: 32px">
+    <tr>
+        <th style="width: 60%"><h4><b>REVENUES</b></h4></th>
+        <th style="text-align: center">ESTIMATED</th>
+    </tr>
+    <tr>
+        <td>AUSO Support</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td>Other Income</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td>Participant Support</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: center"><hr /></td>
+    </tr>
+    <tr>
+        <td style="text-align: right">TOTAL:</td>
+        <td style="text-align: center">฿0.00</td>
+    </tr>
+</table>
+
+<table style="width: 100%; margin-top: 32px">
+    <tr>
+        <th style="width: 60%"><h4><b>EXPENSES</b></h4></th>
+        <th style="text-align: center">ESTIMATED</th>
+    </tr>
+    <tr>
+        <td>Accommodation, Seminar Room & Fee(s)	</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td>Transportation</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td>Miscellaneous</td>
+        <td><input class="form-control" type="text" style="height: 50%" /></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td style="text-align: center"><hr /></td>
+    </tr>
+    <tr>
+        <td style="text-align: right">TOTAL:</td>
+        <td style="text-align: center">฿0.00</td>
+    </tr>
+</table>
+
+<input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px" value="CREATE PROJECT" />

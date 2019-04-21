@@ -58,12 +58,51 @@ body {
 
 .card {
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 16px; /* 5px rounded corners */
 }
 
 /* Add some padding inside the card container */
-.container {
-    padding: 2px 16px;
+.card-container {
+    padding: 24px;
+}
+
+section {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --dot-size: 16px;
+}
+
+.complete-dot {
+    height: var(--dot-size);
+    width: var(--dot-size);
+    background-color: #00B924;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ongoing-dot {
+    height: var(--dot-size);
+    width: var(--dot-size);
+    background-color: #F4F400;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.rejected-dot {
+    height: var(--dot-size);
+    width: var(--dot-size);
+    background-color: #FF0000;
+    border-radius: 50%;
+    display: inline-block;
 }
