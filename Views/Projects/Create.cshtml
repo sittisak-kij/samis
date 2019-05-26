@@ -30,8 +30,8 @@
             </select>
         </td>
         <td><b>Semester: </b></td>
-        <td>
-            <select id="inputState" class="form-control" style="width: 80%;">
+        <td colspan="2">
+            <select id="inputState" class="form-control">
                 <option selected>2/2018</option>
                 <option>3/2018</option>
                 <option>1/2019</option>
@@ -49,19 +49,20 @@
             </select>
         </td>
         <td><b>Started Date: </b></td>
-        <td><input class="form-control" type="date" style="width: 80%; height: 50%" /></td>
+        <td colspan="2"><input class="form-control" type="date"/></td>
     </tr>
     <tr>
         <td><b>Venue: </b></td>
-        <td><input class="form-control" type="text" style="width: 80%; height: 50%" /></td>
+        <td><input class="form-control" type="text" style="width: 80%" /></td>
         <td><b>Ended Date: </b></td>
-        <td><input class="form-control" type="date" style="width: 80%; height: 50%" /></td>
+        <td colspan="2"><input class="form-control" type="date"/></td>
     </tr>
     <tr>
         <td><b>Advisor: </b></td>
         <td>A. Sakhon Ounla</td>
         <td><b>Participants: </b></td>
-        <td><input class="form-control" type="text" style="width: 80%; height: 50%" /></td>
+        <td><input class="form-control" type="text" style="width: 90%" /></td>
+        <td style="width: 16px">Persons</td>
     </tr>
 </table>
 
@@ -71,16 +72,59 @@
         <th style="text-align: center">ESTIMATED</th>
     </tr>
     <tr>
-        <td>AUSO Support</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+        <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option selected>AUSO Support</option>
+                        <option>Other Income</option>
+                        <option>Participant Support</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
     </tr>
     <tr>
-        <td>Other Income</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+ <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option>AUSO Support</option>
+                        <option selected>Other Income</option>
+                        <option>Participant Support</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
     </tr>
     <tr>
-        <td>Participant Support</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+         <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option>AUSO Support</option>
+                        <option>Other Income</option>
+                        <option selected>Participant Support</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
+    </tr>
+    <tr>
+        <td><button style="margin-top: 16px" type="button" class="btn btn-secondary">Add Revenue</button></td>
+        <td></td>
     </tr>
     <tr>
         <td></td>
@@ -98,16 +142,59 @@
         <th style="text-align: center">ESTIMATED</th>
     </tr>
     <tr>
-        <td>Accommodation, Seminar Room & Fee(s)	</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+         <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option selected>Accommodation, Seminar Room & Fee(s)</option>
+                        <option>Transportation</option>
+                        <option>Miscellaneous</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
     </tr>
     <tr>
-        <td>Transportation</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+                 <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option>Accommodation, Seminar Room & Fee(s)</option>
+                        <option selected>Transportation</option>
+                        <option>Miscellaneous</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
     </tr>
     <tr>
-        <td>Miscellaneous</td>
-        <td><input class="form-control" type="text" style="height: 50%" /></td>
+                 <td>
+            <div class="flex-container">
+                <div style="flex-grow: 1">
+                    <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"/>
+                </div>
+                <div style="flex-grow: 100">
+                    <select id="inputState" class="form-control" style="width: 80%;">
+                        <option>Accommodation, Seminar Room & Fee(s)</option>
+                        <option>Transportation</option>
+                        <option selected>Miscellaneous</option>
+                    </select>
+                </div>
+            </div>
+        </td>
+        <td><input class="form-control" type="text"/></td>
+    </tr>
+    <tr>
+        <td><button style="margin-top: 16px" type="button" class="btn btn-secondary">Add Expense</button></td>
+        <td></td>
     </tr>
     <tr>
         <td></td>
