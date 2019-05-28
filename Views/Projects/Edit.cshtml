@@ -1,7 +1,7 @@
 ﻿@model samis.Models.ActivityInformation
 
 @{
-    ViewData["Title"] = "Edit";
+ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
@@ -42,11 +42,6 @@
                 <label asp-for="endDate" class="control-label"></label>
                 <input asp-for="endDate" class="form-control" />
                 <span asp-validation-for="endDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="locationTypeId" class="control-label"></label>
-                <select asp-for="locationTypeId" class="form-control" asp-items="ViewBag.locationTypeId"></select>
-                <span asp-validation-for="locationTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="venue" class="control-label"></label>
@@ -90,5 +85,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

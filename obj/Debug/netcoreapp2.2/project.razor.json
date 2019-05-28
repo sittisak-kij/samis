@@ -2829,6 +2829,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/ProjectLevel/Create.cshtml",
+      "TargetPath": "Views/ProjectLevel/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/AdvisorPositions/Index.cshtml",
       "TargetPath": "Views/AdvisorPositions/Index.cshtml",
       "FileKind": "mvc"
@@ -2851,6 +2856,11 @@
     {
       "FilePath": "Views/ActivityTypes/Details.cshtml",
       "TargetPath": "Views/ActivityTypes/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/ProjectLevel/Edit.cshtml",
+      "TargetPath": "Views/ProjectLevel/Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2959,6 +2969,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/ProjectLevel/Delete.cshtml",
+      "TargetPath": "Views/ProjectLevel/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/ProjectLevel/Details.cshtml",
+      "TargetPath": "Views/ProjectLevel/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Admin/Edit.cshtml",
       "TargetPath": "Views/Admin/Edit.cshtml",
       "FileKind": "mvc"
@@ -2971,6 +2991,11 @@
     {
       "FilePath": "Views/StatusTypes/Delete.cshtml",
       "TargetPath": "Views/StatusTypes/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/ProjectLevel/Index.cshtml",
+      "TargetPath": "Views/ProjectLevel/Index.cshtml",
       "FileKind": "mvc"
     }
   ]

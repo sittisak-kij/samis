@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using samis.Data;
 
 namespace samis.Migrations
 {
     [DbContext(typeof(SamisDbContext))]
-    partial class SamisDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190528021610_move db1")]
+    partial class movedb1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +33,8 @@ namespace samis.Migrations
                     b.Property<int>("advisorId");
 
                     b.Property<DateTime?>("endDate");
+
+                    b.Property<int>("locationTypeId");
 
                     b.Property<int>("participant");
 
@@ -55,6 +59,8 @@ namespace samis.Migrations
                     b.HasIndex("activityUnitId");
 
                     b.HasIndex("advisorId");
+
+                    b.HasIndex("locationTypeId");
 
                     b.HasIndex("statusTypeId");
 
@@ -249,18 +255,6 @@ namespace samis.Migrations
                     b.ToTable("Praticipants");
                 });
 
-            modelBuilder.Entity("samis.Models.ProjectLevel", b =>
-                {
-                    b.Property<int>("projectLevelId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("name");
-
-                    b.HasKey("projectLevelId");
-
-                    b.ToTable("ProjectLevels");
-                });
-
             modelBuilder.Entity("samis.Models.StatusType", b =>
                 {
                     b.Property<int>("statusTypeId")
@@ -301,6 +295,11 @@ namespace samis.Migrations
                     b.HasOne("samis.Models.Advisor", "advisor")
                         .WithMany()
                         .HasForeignKey("advisorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("samis.Models.LocationType", "locationType")
+                        .WithMany()
+                        .HasForeignKey("locationTypeId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("samis.Models.StatusType", "statusType")

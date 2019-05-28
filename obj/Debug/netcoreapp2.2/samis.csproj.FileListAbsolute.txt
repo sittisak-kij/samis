@@ -128,3 +128,8 @@ G:/samis/obj/Debug/netcoreapp2.2/Razor/Views/Projects/Index.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/StatusTypes/Details.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/StatusTypes/Edit.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/StatusTypes/Index.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Create.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Delete.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Details.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Edit.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Index.g.cshtml.cs
