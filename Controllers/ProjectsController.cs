@@ -36,9 +36,8 @@ namespace samis.Controllers
         // GET: Projects/Create
         public IActionResult Create()
         {
-            ViewData["activityUnitId"] = new SelectList(_context.ActivityUnits, "activityUnitId", "activityUnitId");
-            ViewData["advisorId"] = new SelectList(_context.Advisors, "advisorId", "advisorId");
-            ViewData["statusTypeId"] = new SelectList(_context.StatusTypes, "statusTypeId", "statusTypeId");
+            ViewData["activityTypeName"] = new SelectList(_context.ActivityTypes, "activityTypeId", "activityTypeName");
+            ViewData["projectLevelName"] = new SelectList(_context.ProjectLevels, "projectLevelId", "name");
             return View();
         }
 
@@ -47,10 +46,17 @@ namespace samis.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("activityId,activityUnitId,referenceNumber,activityName,typeId,startDate,endDate,venue,semester,year,participant,statusTypeId,advisorId")] ActivityInformation activityInformation)
+        public async Task<IActionResult> Create(ActivityInformation activityInformation)
         {
-            var referenceNumber = DateTime.Now.Year + DateTime.Now.Month + "0001";
+            var temp = activityInformation.referenceNumber.Split("/");
+            activityInformation.semester = int.Parse(temp[0]);
+            activityInformation.year = int.Parse(temp[1]);
+            var referenceNumber = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString().PadLeft(2, '0') + "0001";
             activityInformation.referenceNumber = referenceNumber;
+            activityInformation.activityTypeId = 1;
+            activityInformation.activityUnitId = 1;
+            activityInformation.advisorId = 1;
+            activityInformation.statusTypeId = 1;
             if (ModelState.IsValid)
             {
                 _context.Add(activityInformation);

@@ -1,7 +1,7 @@
 ﻿@model samis.Models.Advisor
 
 @{
-    ViewData["Title"] = "Create";
+ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -34,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="advisorPositionId" class="control-label"></label>
-                <select asp-for="advisorPositionId" class ="form-control" asp-items="ViewBag.advisorPositionId"></select>
+                <select asp-for="advisorPositionId" class="form-control" asp-items="ViewBag.advisorPositionId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -48,5 +48,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

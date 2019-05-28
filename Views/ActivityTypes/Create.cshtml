@@ -1,7 +1,7 @@
 ﻿@model samis.Models.ActivityType
 
 @{
-    ViewData["Title"] = "Create";
+ViewData["Title"] = "Create";
 }
 
 <h1>Create</h1>
@@ -13,9 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="actyivityTypeName" class="control-label"></label>
-                <input asp-for="actyivityTypeName" class="form-control" />
-                <span asp-validation-for="actyivityTypeName" class="text-danger"></span>
+                <label asp-for="activityTypeName" class="control-label"></label>
+                <input asp-for="activityTypeName" class="form-control" />
+                <span asp-validation-for="activityTypeName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -29,5 +29,5 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

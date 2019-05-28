@@ -2764,6 +2764,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetType/Details.cshtml",
+      "TargetPath": "Views/BudgetType/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Admin/Delete.cshtml",
       "TargetPath": "Views/Admin/Delete.cshtml",
       "FileKind": "mvc"
@@ -2794,8 +2799,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetType/Edit.cshtml",
+      "TargetPath": "Views/BudgetType/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Projects/Details.cshtml",
       "TargetPath": "Views/Projects/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/BudgetType/Index.cshtml",
+      "TargetPath": "Views/BudgetType/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2806,6 +2821,16 @@
     {
       "FilePath": "Views/AdvisorPositions/Delete.cshtml",
       "TargetPath": "Views/AdvisorPositions/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Budget/Delete.cshtml",
+      "TargetPath": "Views/Budget/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/BudgetType/Delete.cshtml",
+      "TargetPath": "Views/BudgetType/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2824,8 +2849,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetStatus/Index.cshtml",
+      "TargetPath": "Views/BudgetStatus/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/LocationTypes/Index.cshtml",
       "TargetPath": "Views/LocationTypes/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/BudgetStatus/Create.cshtml",
+      "TargetPath": "Views/BudgetStatus/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2854,6 +2889,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetStatus/Edit.cshtml",
+      "TargetPath": "Views/BudgetStatus/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/ActivityTypes/Details.cshtml",
       "TargetPath": "Views/ActivityTypes/Details.cshtml",
       "FileKind": "mvc"
@@ -2861,6 +2901,11 @@
     {
       "FilePath": "Views/ProjectLevel/Edit.cshtml",
       "TargetPath": "Views/ProjectLevel/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Budget/Index.cshtml",
+      "TargetPath": "Views/Budget/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2914,8 +2959,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetStatus/Details.cshtml",
+      "TargetPath": "Views/BudgetStatus/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views/Shared/_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Budget/Details.cshtml",
+      "TargetPath": "Views/Budget/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2949,6 +3004,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetStatus/Delete.cshtml",
+      "TargetPath": "Views/BudgetStatus/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Projects/Create.cshtml",
       "TargetPath": "Views/Projects/Create.cshtml",
       "FileKind": "mvc"
@@ -2956,6 +3016,11 @@
     {
       "FilePath": "Views/AdvisorPositions/Create.cshtml",
       "TargetPath": "Views/AdvisorPositions/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Budget/Create.cshtml",
+      "TargetPath": "Views/Budget/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2969,8 +3034,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetType/Create.cshtml",
+      "TargetPath": "Views/BudgetType/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/ProjectLevel/Delete.cshtml",
       "TargetPath": "Views/ProjectLevel/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Budget/Edit.cshtml",
+      "TargetPath": "Views/Budget/Edit.cshtml",
       "FileKind": "mvc"
     },
     {

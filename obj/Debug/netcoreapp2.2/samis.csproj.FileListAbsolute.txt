@@ -133,3 +133,13 @@ G:/samis/obj/Debug/netcoreapp2.2/Razor/Views/Projects/Index.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Details.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Edit.g.cshtml.cs
 /Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/ProjectLevel/Index.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetType/Create.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetType/Delete.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetType/Details.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetType/Edit.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetType/Index.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetStatus/Create.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetStatus/Delete.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetStatus/Details.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetStatus/Edit.g.cshtml.cs
+/Users/sittisak/Studies/samis/obj/Debug/netcoreapp2.2/Razor/Views/BudgetStatus/Index.g.cshtml.cs

@@ -14,7 +14,7 @@ namespace samis.Models
         public string referenceNumber { get; set; }
         public string activityName { get; set; }
 
-        public int typeId { get; set; }
+        public int activityTypeId { get; set; }
         public ActivityType activityType { get; set; }
 
         public DateTime? startDate { get; set; }
@@ -24,6 +24,9 @@ namespace samis.Models
         public int semester { get; set; }
         public int year { get; set; }
         public int participant { get; set; }
+
+        public int projectLevelId { get; set; }
+        public ProjectLevel projectLevel { get; set; }
 
         public int statusTypeId { get; set; }
         public StatusType statusType { get; set; }

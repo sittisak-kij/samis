@@ -5,8 +5,8 @@ namespace samis.Models
     public class ActivityType
     {
         [Key]
-        public int activityTypeId {get; set;}
+        public int activityTypeId { get; set; }
 
-        public string actyivityTypeName {get; set;}
+        public string activityTypeName { get; set; }
     }
 }

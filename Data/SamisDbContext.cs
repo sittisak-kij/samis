@@ -16,8 +16,9 @@ namespace samis.Data
         public DbSet<Advisor> Advisors { get; set; }
         public DbSet<AdvisorPosition> AdvisorPositions { get; set; }
         public DbSet<Budget> Bugets { get; set; }
-        public DbSet<BudgetDetail> BudgetDetails { get; set; }
+        public DbSet<BudgetStatus> BudgetStatus { get; set; }
         public DbSet<BudgetType> BudgetTypes { get; set; }
+        public DbSet<BudgetDescription> BudgetDescription { get; set; }
         public DbSet<LocationType> LocationTypes { get; set; }
         public DbSet<OrganizerType> OrganizerTypes { get; set; }
         public DbSet<Origanizer> Origanizers { get; set; }

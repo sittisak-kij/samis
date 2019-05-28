@@ -24,7 +24,7 @@ namespace samis.Migrations
 
                     b.Property<string>("activityName");
 
-                    b.Property<int?>("activityTypeId");
+                    b.Property<int>("activityTypeId");
 
                     b.Property<int>("activityUnitId");
 
@@ -34,6 +34,8 @@ namespace samis.Migrations
 
                     b.Property<int>("participant");
 
+                    b.Property<int>("projectLevelId");
+
                     b.Property<string>("referenceNumber");
 
                     b.Property<int>("semester");
@@ -41,8 +43,6 @@ namespace samis.Migrations
                     b.Property<DateTime?>("startDate");
 
                     b.Property<int>("statusTypeId");
-
-                    b.Property<int>("typeId");
 
                     b.Property<string>("venue");
 
@@ -56,6 +56,8 @@ namespace samis.Migrations
 
                     b.HasIndex("advisorId");
 
+                    b.HasIndex("projectLevelId");
+
                     b.HasIndex("statusTypeId");
 
                     b.ToTable("ActivityInformations");
@@ -66,7 +68,7 @@ namespace samis.Migrations
                     b.Property<int>("activityTypeId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("actyivityTypeName");
+                    b.Property<string>("activityTypeName");
 
                     b.HasKey("activityTypeId");
 
@@ -136,31 +138,47 @@ namespace samis.Migrations
 
                     b.Property<double>("amount");
 
-                    b.Property<int>("budgetDetailId");
+                    b.Property<int>("budgetDescriptionId");
 
-                    b.Property<int>("budgetTypeId");
+                    b.Property<int>("budgetStatusId");
 
                     b.HasKey("budgetId");
 
                     b.HasIndex("activityId");
 
-                    b.HasIndex("budgetDetailId");
+                    b.HasIndex("budgetDescriptionId");
 
-                    b.HasIndex("budgetTypeId");
+                    b.HasIndex("budgetStatusId");
 
                     b.ToTable("Bugets");
                 });
 
-            modelBuilder.Entity("samis.Models.BudgetDetail", b =>
+            modelBuilder.Entity("samis.Models.BudgetDescription", b =>
                 {
-                    b.Property<int>("budgetDetailId")
+                    b.Property<int>("budgetDescriptionId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("budgetDetailDescription");
+                    b.Property<int>("budgetTypeId");
 
-                    b.HasKey("budgetDetailId");
+                    b.Property<string>("name");
 
-                    b.ToTable("BudgetDetails");
+                    b.HasKey("budgetDescriptionId");
+
+                    b.HasIndex("budgetTypeId");
+
+                    b.ToTable("BudgetDescription");
+                });
+
+            modelBuilder.Entity("samis.Models.BudgetStatus", b =>
+                {
+                    b.Property<int>("budgetStatusId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("name");
+
+                    b.HasKey("budgetStatusId");
+
+                    b.ToTable("BudgetStatus");
                 });
 
             modelBuilder.Entity("samis.Models.BudgetType", b =>
@@ -291,7 +309,8 @@ namespace samis.Migrations
                 {
                     b.HasOne("samis.Models.ActivityType", "activityType")
                         .WithMany()
-                        .HasForeignKey("activityTypeId");
+                        .HasForeignKey("activityTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("samis.Models.ActivityUnit", "activityUnit")
                         .WithMany()
@@ -301,6 +320,11 @@ namespace samis.Migrations
                     b.HasOne("samis.Models.Advisor", "advisor")
                         .WithMany()
                         .HasForeignKey("advisorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("samis.Models.ProjectLevel", "projectLevel")
+                        .WithMany()
+                        .HasForeignKey("projectLevelId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("samis.Models.StatusType", "statusType")
@@ -332,11 +356,19 @@ namespace samis.Migrations
                         .HasForeignKey("activityId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("samis.Models.BudgetDetail", "budgetDetail")
+                    b.HasOne("samis.Models.BudgetDescription", "budgetDescription")
                         .WithMany()
-                        .HasForeignKey("budgetDetailId")
+                        .HasForeignKey("budgetDescriptionId")
                         .OnDelete(DeleteBehavior.Cascade);
 
+                    b.HasOne("samis.Models.BudgetStatus", "budgetStatus")
+                        .WithMany()
+                        .HasForeignKey("budgetStatusId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("samis.Models.BudgetDescription", b =>
+                {
                     b.HasOne("samis.Models.BudgetType", "budgetType")
                         .WithMany()
                         .HasForeignKey("budgetTypeId")
