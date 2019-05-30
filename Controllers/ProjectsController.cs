@@ -38,6 +38,8 @@ namespace samis.Controllers
         {
             ViewData["activityTypeName"] = new SelectList(_context.ActivityTypes, "activityTypeId", "activityTypeName");
             ViewData["projectLevelName"] = new SelectList(_context.ProjectLevels, "projectLevelId", "name");
+            ViewBag.revenues = _context.BudgetDescription.Where(x => x.budgetTypeId == 1);
+            ViewBag.expenses = _context.BudgetDescription.Where(x => x.budgetTypeId == 2);
             return View();
         }
 

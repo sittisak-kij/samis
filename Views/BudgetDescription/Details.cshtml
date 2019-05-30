@@ -1,0 +1,24 @@
+@model samis.Models.BudgetDescription
+
+<div>
+    <h4>BudgetDescription</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.budgetType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.budgetType.budgetTypeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.budgetDescriptionId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,47 @@
+@model IEnumerable<samis.Models.Budget>
+
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.activityInformation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.budgetDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.budgetStatus)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.amount)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.activityInformation.activityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.budgetDescription.budgetDescriptionId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.budgetStatus.budgetStatusId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.amount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.budgetId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.budgetId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.budgetId">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

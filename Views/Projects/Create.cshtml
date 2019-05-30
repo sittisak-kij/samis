@@ -12,13 +12,13 @@ ViewData["Title"] = "Create Project";
     </div>
 </div>
 
-@model samis.Models.ActivityInformation
+@model samis.Models.Project
 <form asp-action="Create">
     <div class="flex-container" style="margin-top: 16px">
         <div style="flex-grow: 1">
-            <h3><b><input asp-for="activityName" class="form-control" type="text" style="width: 80%; height: 50%"
-                        placeholder="PROJECT NAME" /></b>
-                <span asp-validation-for="activityName" class="text-danger"></span>
+            <h3><b><input asp-for="activityInformation.activityName" class="form-control" type="text"
+                        style="width: 80%; height: 50%" placeholder="PROJECT NAME" /></b>
+                <span asp-validation-for="activityInformation.activityName" class="text-danger"></span>
             </h3>
         </div>
         <div style="flex-grow: 1">
@@ -29,13 +29,13 @@ ViewData["Title"] = "Create Project";
         <tr>
             <td><b>Project Type: </b></td>
             <td>
-                <select asp-for="activityTypeId" class="form-control" asp-items="ViewBag.activityTypeName"
-                    style="width: 80%;"></select>
-                <span asp-validation-for="activityTypeId" class="text-danger"></span>
+                <select asp-for="activityInformation.activityTypeId" class="form-control"
+                    asp-items="ViewBag.activityTypeName" style="width: 80%;"></select>
+                <span asp-validation-for="activityInformation.activityTypeId" class="text-danger"></span>
             </td>
             <td><b>Semester: </b></td>
             <td colspan="2">
-                <select asp-for="referenceNumber" id="semester" class="form-control">
+                <select asp-for="activityInformation.referenceNumber" id="semester" class="form-control">
                     <option selected>2/2018</option>
                     <option>3/2018</option>
                     <option>1/2019</option>
@@ -45,23 +45,24 @@ ViewData["Title"] = "Create Project";
         <tr>
             <td><b>Project Level: </b></td>
             <td>
-                <select asp-for="projectLevelId" class="form-control" style="width: 80%;"
+                <select asp-for="activityInformation.projectLevelId" class="form-control" style="width: 80%;"
                     asp-items="ViewBag.projectLevelName"></select>
-                <span asp-validation-for="projectLevelId" class="text-danger"></span>
+                <span asp-validation-for="activityInformation.projectLevelId" class="text-danger"></span>
             </td>
             <td><b>Started Date: </b></td>
             <td colspan="2">
-                <input asp-for="startDate" class="form-control" type="date" />
-                <span asp-validation-for="startDate" class="text-danger"></span>
+                <input asp-for="activityInformation.startDate" class="form-control" type="date" />
+                <span asp-validation-for="activityInformation.startDate" class="text-danger"></span>
             </td>
         </tr>
         <tr>
             <td><b>Venue: </b></td>
-            <td><input asp-for="venue" class="form-control" type="text" style="width: 80%" /></td>
+            <td><input asp-for="activityInformation.venue" class="form-control" type="text" style="width: 80%" />
+            </td>
             <td><b>Ended Date: </b></td>
             <td colspan="2">
-                <input asp-for="endDate" class="form-control" type="date" />
-                <span asp-validation-for="endDate" class="text-danger"></span>
+                <input asp-for="activityInformation.endDate" class="form-control" type="date" />
+                <span asp-validation-for="activityInformation.endDate" class="text-danger"></span>
             </td>
         </tr>
         <tr>
@@ -69,8 +70,8 @@ ViewData["Title"] = "Create Project";
             <td>A. Sakhon Ounla</td>
             <td><b>Participants: </b></td>
             <td>
-                <input asp-for="participant" class="form-control" type="text" style="width: 90%" />
-                <span asp-validation-for="participant" class="text-danger"></span>
+                <input asp-for="activityInformation.participant" class="form-control" type="text" style="width: 90%" />
+                <span asp-validation-for="activityInformation.participant" class="text-danger"></span>
             </td>
             <td style="width: 16px">Persons</td>
         </tr>
@@ -91,51 +92,17 @@ ViewData["Title"] = "Create Project";
                             onclick="deleteRowRevenue(this)" />
                     </div>
                     <div style=" flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option selected>AUSO Support</option>
-                            <option>Other Income</option>
-                            <option>Participant Support</option>
+                        <select class="form-control" style="width: 80%;">
+                            @foreach(var revenue in ViewBag.revenues) {
+                            <option>@revenue.name</option>
+                            }
                         </select>
                     </div>
                 </div>
             </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
-        </tr>
-        <tr id="tridRevenue2">
-            <td>
-                <div class="flex-container">
-                    <div style="flex-grow: 1">
-                        <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowRevenue(this)" />
-                    </div>
-                    <div style=" flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option>AUSO Support</option>
-                            <option selected>Other Income</option>
-                            <option>Participant Support</option>
-                        </select>
-                    </div>
-                </div>
+            <td><input class="form-control" type="number" min="1" max="9999999" id="demo"
+                    onkeydown="keydownFunction(this)" onkeyup="keyupFunction(this)" />
             </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
-        </tr>
-        <tr id="tridRevenue3">
-            <td>
-                <div class="flex-container">
-                    <div style="flex-grow: 1">
-                        <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowRevenue(this)" />
-                    </div>
-                    <div style=" flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option>AUSO Support</option>
-                            <option>Other Income</option>
-                            <option selected>Participant Support</option>
-                        </select>
-                    </div>
-                </div>
-            </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
         </tr>
         <tr>
             <td><button style="margin-top: 16px" type="button" class="btn btn-secondary"
@@ -170,46 +137,10 @@ ViewData["Title"] = "Create Project";
                             onclick="deleteRowExpense(this)" />
                     </div>
                     <div style="flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option selected>Accommodation, Seminar Room & Fee(s)</option>
-                            <option>Transportation</option>
-                            <option>Miscellaneous</option>
-                        </select>
-                    </div>
-                </div>
-            </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
-        </tr>
-        <tr id="tridExpense2">
-            <td>
-                <div class="flex-container">
-                    <div style="flex-grow: 1">
-                        <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowExpense(this)" />
-                    </div>
-                    <div style="flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option>Accommodation, Seminar Room & Fee(s)</option>
-                            <option selected>Transportation</option>
-                            <option>Miscellaneous</option>
-                        </select>
-                    </div>
-                </div>
-            </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
-        </tr>
-        <tr id="tridExpense3">
-            <td>
-                <div class="flex-container">
-                    <div style="flex-grow: 1">
-                        <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowExpense(this)" />
-                    </div>
-                    <div style="flex-grow: 100">
-                        <select id="inputState" class="form-control" style="width: 80%;">
-                            <option>Accommodation, Seminar Room & Fee(s)</option>
-                            <option>Transportation</option>
-                            <option selected>Miscellaneous</option>
+                        <select class="form-control" style="width: 80%;">
+                            @foreach(var expense in ViewBag.expenses) {
+                            <option>@expense.name</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -234,18 +165,35 @@ ViewData["Title"] = "Create Project";
         </tr>
     </table>
 
-    <input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px"
-        value="CREATE PROJECT" />
+    <!-- <input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px"
+        value="CREATE PROJECT" onclick="setAllBudgetInList()" /> -->
 </form>
+
+<input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px" value="CREATE PROJECT"
+    onclick="setAllBudgetInList()" />
 
 @section Scripts {
 <script>
+    function insertRowRevenue() {
+        var xTable = document.getElementById('revenueTable');
+        var index = xTable.rows.length - 3;
+        var tr = xTable.insertRow(index);
+        tr.id = 'tridRevenue' + index
+        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowRevenue(this)" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach(var revenue in ViewBag.revenues) {<option>@revenue.name</option>}</select></div></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>'
+    }
+
+    function deleteRowRevenue(row) {
+        var trid = $(row).closest('tr').attr('id');
+        var row = document.getElementById(trid);
+        row.parentElement.removeChild(row);
+    }
+
     function insertRowExpense() {
         var xTable = document.getElementById('expenseTable');
         var index = xTable.rows.length - 3;
         var tr = xTable.insertRow(index);
         tr.id = 'tridExpense' + index
-        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowExpense(this)" /></div><div style="flex-grow: 100"><select id="inputState" class="form-control" style="width: 80%;"><option>Accommodation, Seminar Room & Fee(s)</option><option>Transportation</option><option selected>Miscellaneous</option></select></div></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>';
+        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowExpense(this)" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach(var expense in ViewBag.expenses) {<option>@expense.name</option>}</select></div></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>'
     }
 
     function deleteRowExpense(row) {
@@ -254,18 +202,28 @@ ViewData["Title"] = "Create Project";
         row.parentElement.removeChild(row);
     }
 
-    function insertRowRevenue() {
-        var xTable = document.getElementById('revenueTable');
-        var index = xTable.rows.length - 3;
-        var tr = xTable.insertRow(index);
-        tr.id = 'tridRevenue' + index
-        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowRevenue(this)" /></div><div style="flex-grow: 100"><select id="inputState" class="form-control" style="width: 80%;"><option>AUSO Support</option><option>Other Income</option><option selected>Participant Support</option></select></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>'
+    function setAllBudgetInList() {
+        var revenueTable = document.getElementById('revenueTable').getElementsByTagName('input')
+        var expenseTable = document.getElementById('expenseTable').getElementsByTagName('input')
+        for (var i = 0; i < revenueTable.length; i++) {
+            var id = revenueTable[i].id
+            alert(id)
+        }
     }
 
-    function deleteRowRevenue(row) {
-        var trid = $(row).closest('tr').attr('id');
-        var row = document.getElementById(trid);
-        row.parentElement.removeChild(row);
-    }
+    // function keydownFunction(row) {
+    //     $(row).style.backgroundColor = "red";
+    // }
+
+    // function keyupFunction(row) {
+    //     var trid = $(row).closest('input').attr('id');
+    //     alert(trid)
+        // $(row).style.backgroundColor = "green";
+    // }
+
+    // function getInputTypeValue(input) {
+    //     var inputValue = $(input).closest('input').attr('value');
+    //     alert(inputValue)
+    // }
 </script>
 }

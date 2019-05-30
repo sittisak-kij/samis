@@ -2779,8 +2779,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetDescription/Index.cshtml",
+      "TargetPath": "Views/BudgetDescription/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Projects/Index.cshtml",
       "TargetPath": "Views/Projects/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/PP/Index.cshtml",
+      "TargetPath": "Views/PP/Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2794,6 +2804,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetDescription/Create.cshtml",
+      "TargetPath": "Views/BudgetDescription/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/Privacy.cshtml",
       "TargetPath": "Views/Home/Privacy.cshtml",
       "FileKind": "mvc"
@@ -2801,6 +2816,11 @@
     {
       "FilePath": "Views/BudgetType/Edit.cshtml",
       "TargetPath": "Views/BudgetType/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/PP/Delete.cshtml",
+      "TargetPath": "Views/PP/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2821,6 +2841,11 @@
     {
       "FilePath": "Views/AdvisorPositions/Delete.cshtml",
       "TargetPath": "Views/AdvisorPositions/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/BudgetDescription/Details.cshtml",
+      "TargetPath": "Views/BudgetDescription/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2944,6 +2969,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetDescription/Delete.cshtml",
+      "TargetPath": "Views/BudgetDescription/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/LocationTypes/Edit.cshtml",
       "TargetPath": "Views/LocationTypes/Edit.cshtml",
       "FileKind": "mvc"
@@ -2961,6 +2991,11 @@
     {
       "FilePath": "Views/BudgetStatus/Details.cshtml",
       "TargetPath": "Views/BudgetStatus/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/PP/Details.cshtml",
+      "TargetPath": "Views/PP/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2994,8 +3029,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/BudgetDescription/Edit.cshtml",
+      "TargetPath": "Views/BudgetDescription/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Advisors/Details.cshtml",
       "TargetPath": "Views/Advisors/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/PP/Create.cshtml",
+      "TargetPath": "Views/PP/Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3016,6 +3061,11 @@
     {
       "FilePath": "Views/AdvisorPositions/Create.cshtml",
       "TargetPath": "Views/AdvisorPositions/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/PP/Edit.cshtml",
+      "TargetPath": "Views/PP/Edit.cshtml",
       "FileKind": "mvc"
     },
     {
