@@ -17,7 +17,7 @@ namespace samis
 {
     public class Startup
     {
-        private const string V = "Server=localhost;Database=samis;User=root;Password=p@ssw0rd;";
+        private const string V = "Server=localhost;Database=samis;User=root;Password=root;";
 
         public Startup(IConfiguration configuration)
         {

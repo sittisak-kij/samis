@@ -33,5 +33,7 @@ namespace samis.Models
 
         public int advisorId { get; set; }
         public Advisor advisor { get; set; }
+
+        public DateTime timestamp { get; set; }
     }
 }

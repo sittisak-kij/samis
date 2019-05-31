@@ -1,5 +1,5 @@
 ﻿@{
-ViewData["Title"] = "Create Project";
+    ViewData["Title"] = "Create Project";
 }
 
 <div class="flex-container">
@@ -7,17 +7,22 @@ ViewData["Title"] = "Create Project";
         <h4><b>CREATE PROJECT</b></h4>
     </div>
     <div style="flex-grow: 1">
-        <h6 style="text-align: right">VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png"
-                width="30" height="30" /></h6>
+        <h6 style="text-align: right">
+            VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png"
+                                                               width="30" height="30" />
+        </h6>
     </div>
 </div>
 
 @model samis.Models.Project
-<form asp-action="Create">
+<form asp-action="Create" onsubmit="setAllBudgetInList()">
     <div class="flex-container" style="margin-top: 16px">
         <div style="flex-grow: 1">
-            <h3><b><input asp-for="activityInformation.activityName" class="form-control" type="text"
-                        style="width: 80%; height: 50%" placeholder="PROJECT NAME" /></b>
+            <h3>
+                <b>
+                    <input id="activityName" asp-for="activityInformation.activityName" class="form-control" type="text"
+                           style="width: 80%; height: 50%" placeholder="PROJECT NAME" />
+                </b>
                 <span asp-validation-for="activityInformation.activityName" class="text-danger"></span>
             </h3>
         </div>
@@ -30,7 +35,7 @@ ViewData["Title"] = "Create Project";
             <td><b>Project Type: </b></td>
             <td>
                 <select asp-for="activityInformation.activityTypeId" class="form-control"
-                    asp-items="ViewBag.activityTypeName" style="width: 80%;"></select>
+                        asp-items="ViewBag.activityTypeName" style="width: 80%;"></select>
                 <span asp-validation-for="activityInformation.activityTypeId" class="text-danger"></span>
             </td>
             <td><b>Semester: </b></td>
@@ -46,7 +51,7 @@ ViewData["Title"] = "Create Project";
             <td><b>Project Level: </b></td>
             <td>
                 <select asp-for="activityInformation.projectLevelId" class="form-control" style="width: 80%;"
-                    asp-items="ViewBag.projectLevelName"></select>
+                        asp-items="ViewBag.projectLevelName"></select>
                 <span asp-validation-for="activityInformation.projectLevelId" class="text-danger"></span>
             </td>
             <td><b>Started Date: </b></td>
@@ -57,7 +62,8 @@ ViewData["Title"] = "Create Project";
         </tr>
         <tr>
             <td><b>Venue: </b></td>
-            <td><input asp-for="activityInformation.venue" class="form-control" type="text" style="width: 80%" />
+            <td>
+                <input asp-for="activityInformation.venue" class="form-control" type="text" style="width: 80%" />
             </td>
             <td><b>Ended Date: </b></td>
             <td colspan="2">
@@ -89,25 +95,30 @@ ViewData["Title"] = "Create Project";
                 <div class="flex-container">
                     <div style="flex-grow: 1">
                         <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowRevenue(this)" />
+                             onclick="deleteRowRevenue(this); calculateRevenue();" />
                     </div>
                     <div style=" flex-grow: 100">
                         <select class="form-control" style="width: 80%;">
-                            @foreach(var revenue in ViewBag.revenues) {
-                            <option>@revenue.name</option>
+                            @foreach (var revenue in ViewBag.revenues)
+                            {
+                                <option value="@revenue.budgetDescriptionId">@revenue.name</option>
                             }
                         </select>
                     </div>
                 </div>
             </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" id="demo"
-                    onkeydown="keydownFunction(this)" onkeyup="keyupFunction(this)" />
+            <td>
+                <input onkeyup="calculateRevenue()" class="form-control" type="number" min="1" max="9999999" id="demo"/>
             </td>
         </tr>
         <tr>
-            <td><button style="margin-top: 16px" type="button" class="btn btn-secondary"
-                    onclick="insertRowRevenue()">Add
-                    Revenue</button></td>
+            <td>
+                <button style="margin-top: 16px" type="button" class="btn btn-secondary"
+                        onclick="insertRowRevenue()">
+                    Add
+                    Revenue
+                </button>
+            </td>
             <td></td>
         </tr>
         <tr>
@@ -118,7 +129,7 @@ ViewData["Title"] = "Create Project";
         </tr>
         <tr>
             <td style="text-align: right">TOTAL:</td>
-            <td style="text-align: center">฿0.00</td>
+            <td style="text-align: center">฿<text id="totalRevenue">0.00</text></td>
         </tr>
     </table>
 
@@ -134,23 +145,28 @@ ViewData["Title"] = "Create Project";
                 <div class="flex-container">
                     <div style="flex-grow: 1">
                         <img src="~/img/ic_delete_money_item.png" width="32px" height="32px"
-                            onclick="deleteRowExpense(this)" />
+                             onclick="deleteRowExpense(this); calculateExpense()" />
                     </div>
                     <div style="flex-grow: 100">
                         <select class="form-control" style="width: 80%;">
-                            @foreach(var expense in ViewBag.expenses) {
-                            <option>@expense.name</option>
+                            @foreach (var expense in ViewBag.expenses)
+                            {
+                                <option value="@expense.budgetDescriptionId">@expense.name</option>
                             }
                         </select>
                     </div>
                 </div>
             </td>
-            <td><input class="form-control" type="number" min="1" max="9999999" /></td>
+            <td><input onkeyup="calculateExpense()" class="form-control" type="number" min="1" max="9999999" /></td>
         </tr>
         <tr>
-            <td><button style="margin-top: 16px" type="button" class="btn btn-secondary"
-                    onclick="insertRowExpense()">Add
-                    Expense</button></td>
+            <td>
+                <button style="margin-top: 16px" type="button" class="btn btn-secondary"
+                        onclick="insertRowExpense()">
+                    Add
+                    Expense
+                </button>
+            </td>
             <td></td>
         </tr>
         <tr>
@@ -161,69 +177,142 @@ ViewData["Title"] = "Create Project";
         </tr>
         <tr>
             <td style="text-align: right">TOTAL:</td>
-            <td style="text-align: center">฿0.00</td>
+            <td style="text-align: center">฿<text id="totalExpense">0.00</text></td>
         </tr>
     </table>
-
-    <!-- <input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px"
-        value="CREATE PROJECT" onclick="setAllBudgetInList()" /> -->
+    
+    <input asp-for="budgets" type="hidden" id="budgets"/>
+    <input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px"
+           value="CREATE PROJECT" />
 </form>
 
-<input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px" value="CREATE PROJECT"
-    onclick="setAllBudgetInList()" />
+@* <input class="btn bg-success" type="submit" style="width: 100%; color: white; margin-top: 32px" value="CREATE PROJECT" *@
+@*        onclick="setAllBudgetInList()" /> *@
 
 @section Scripts {
-<script>
-    function insertRowRevenue() {
-        var xTable = document.getElementById('revenueTable');
-        var index = xTable.rows.length - 3;
-        var tr = xTable.insertRow(index);
-        tr.id = 'tridRevenue' + index
-        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowRevenue(this)" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach(var revenue in ViewBag.revenues) {<option>@revenue.name</option>}</select></div></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>'
-    }
+    <script>
+        function calculateRevenue() {
+            var revenueAmount = document.getElementById('revenueTable').getElementsByTagName('input');
+            var total = 0;
 
-    function deleteRowRevenue(row) {
-        var trid = $(row).closest('tr').attr('id');
-        var row = document.getElementById(trid);
-        row.parentElement.removeChild(row);
-    }
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                var raint = parseFloat(ra);
+                total += raint || 0;
+            }
 
-    function insertRowExpense() {
-        var xTable = document.getElementById('expenseTable');
-        var index = xTable.rows.length - 3;
-        var tr = xTable.insertRow(index);
-        tr.id = 'tridExpense' + index
-        tr.innerHTML = '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowExpense(this)" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach(var expense in ViewBag.expenses) {<option>@expense.name</option>}</select></div></div></td><td><input class="form-control" type="number" min="1" max="9999999" /></td>'
-    }
-
-    function deleteRowExpense(row) {
-        var trid = $(row).closest('tr').attr('id');
-        var row = document.getElementById(trid);
-        row.parentElement.removeChild(row);
-    }
-
-    function setAllBudgetInList() {
-        var revenueTable = document.getElementById('revenueTable').getElementsByTagName('input')
-        var expenseTable = document.getElementById('expenseTable').getElementsByTagName('input')
-        for (var i = 0; i < revenueTable.length; i++) {
-            var id = revenueTable[i].id
-            alert(id)
+            document.getElementById('totalRevenue').innerHTML = total.toLocaleString();
         }
-    }
 
-    // function keydownFunction(row) {
-    //     $(row).style.backgroundColor = "red";
-    // }
+        function calculateExpense() {
+            var revenueAmount = document.getElementById('expenseTable').getElementsByTagName('input');
+            var total = 0;
 
-    // function keyupFunction(row) {
-    //     var trid = $(row).closest('input').attr('id');
-    //     alert(trid)
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                var raint = parseFloat(ra);
+                total += raint || 0;
+            }
+
+            document.getElementById('totalExpense').innerHTML = total.toLocaleString();
+        }
+
+        function insertRowRevenue() {
+            var xTable = document.getElementById('revenueTable');
+            var index = xTable.rows.length - 3;
+            var tr = xTable.insertRow(index);
+            tr.id = 'tridRevenue' + index;
+            tr.innerHTML =
+                '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowRevenue(this); calculateRevenue();" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach (var revenue in ViewBag.revenues)
+                                                                                                                                                                                                                                                                      {<option value="@revenue.budgetDescriptionId">@revenue.name</option>}</select></div></div></td><td><input onkeyup="calculateRevenue()" class="form-control" type="number" min="1" max="9999999" /></td>'
+        }
+
+        function deleteRowRevenue(row) {
+            var trid = $(row).closest('tr').attr('id');
+            var row = document.getElementById(trid);
+            row.parentElement.removeChild(row);
+        }
+
+        function insertRowExpense() {
+            var xTable = document.getElementById('expenseTable');
+            var index = xTable.rows.length - 3;
+            var tr = xTable.insertRow(index);
+            tr.id = 'tridExpense' + index;
+            tr.innerHTML =
+                '<td><div class="flex-container"><div style="flex-grow: 1"><img src="/img/ic_delete_money_item.png" width="32px" height="32px" onclick="deleteRowExpense(this); calculateExpense();" /></div><div style=" flex-grow: 100"><select class="form-control" style="width: 80%;">@foreach (var expense in ViewBag.expenses)
+                                                                                                                                                                                                                                                                      {<option value="@expense.budgetDescriptionId">@expense.name</option>}</select></div></div></td><td><input onkeyup="calculateExpense()" class="form-control" type="number" min="1" max="9999999" /></td>'
+        }
+
+        function deleteRowExpense(row) {
+            var trid = $(row).closest('tr').attr('id');
+            var row = document.getElementById(trid);
+            row.parentElement.removeChild(row);
+        }
+
+        function setAllBudgetInList() {
+            var revenueAmount = document.getElementById('revenueTable').getElementsByTagName('input');
+            var expenseAmount = document.getElementById('expenseTable').getElementsByTagName('input');
+            var revenueTitle = document.getElementById('revenueTable').getElementsByTagName('select');
+            var expenseTitle = document.getElementById('expenseTable').getElementsByTagName('select');
+            var ras = [];
+            var eas = [];
+            var rts = [];
+            var ets = [];
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                ras.push(ra);
+            }
+            for (var j = 0; j < expenseAmount.length; j++) {
+                var ea = expenseAmount[j].value;
+                eas.push(ea);
+            }
+            for (var k = 0; k < revenueTitle.length; k++) {
+                var rt = revenueTitle[k].value;
+                rts.push(rt);
+            }
+            for (var l = 0; l < expenseTitle.length; l++) {
+                var et = expenseTitle[l].value;
+                ets.push(et);
+            }
+
+            var budgets = [];
+
+            for (var m = 0; m < ras.length; m++) {
+                var revenue = {
+                    activityId: -1,
+                    budgetStatusId: 1,
+                    amount: ras[m],
+                    budgetDescriptionId: rts[m]
+                }
+                budgets.push(revenue);
+            }
+
+            for (var n = 0; n < eas.length; n++) {
+                var expense = {
+                    activityId: -1,
+                    budgetStatusId: 1,
+                    amount: eas[n],
+                    budgetDescriptionId: ets[n]
+                }
+                budgets.push(expense);
+            }
+
+            document.getElementById('budgets').value = JSON.stringify(budgets);
+        }
+
+        // function keydownFunction(row) {
+        //     $(row).style.backgroundColor = "red";
+        // }
+
+        // function keyupFunction(row) {
+        //     var trid = $(row).closest('input').attr('id');
+        //     alert(trid)
         // $(row).style.backgroundColor = "green";
-    // }
+        // }
 
-    // function getInputTypeValue(input) {
-    //     var inputValue = $(input).closest('input').attr('value');
-    //     alert(inputValue)
-    // }
-</script>
+        // function getInputTypeValue(input) {
+        //     var inputValue = $(input).closest('input').attr('value');
+        //     alert(inputValue)
+        // }
+    </script>
 }

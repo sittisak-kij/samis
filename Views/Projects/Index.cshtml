@@ -1,39 +1,85 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Projects";
+    var projects = ViewBag.Projects;
 }
 
 <div class="flex-container">
-    <div style="flex-grow: 1"><h4><b>PROJECTS <a href="Projects/Create"><button style="margin-left: 16px" type="button" class="btn btn-success">ADD</button></a></b></h4></div>
-    <div style="flex-grow: 1"><h6 style="text-align: right">VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png" width="30" height="30"/></h6></div>
+    <div style="flex-grow: 1">
+        <h4>
+            <b>
+                PROJECTS
+                <a href="Projects/Create">
+                    <button style="margin-left: 16px" type="button" class="btn btn-success">ADD</button>
+                </a>
+            </b>
+        </h4>
+    </div>
+    <div style="flex-grow: 1">
+        <h6 style="text-align: right">VINCENT MARY SCHOOL OF SCIENCE AND TECHNOLOGY <img src="~/img/ic_vms.png" width="30" height="30" /></h6>
+    </div>
 </div>
 
-<a asp-controller="Projects" asp-action="Details" asp-route-id="1" style="text-decoration:none; color: inherit">
-    <div style="margin: 16px">
-        <div class="card">
-            <div class="card-container">
-                <div class="flex-container">
-                    <div style="flex-grow: 1"><span class="ongoing-dot"></span> <b>S2019090096</b> GRADUATING STUDENT ORIENTATION</div>
-                    <div style="flex-grow: 3"><h6 style="text-align: right">PROPOSED ON:   1  April  2019</h6></div>
-                </div>
-                <div class="flex-container" style="margin-top: 16px">
-                    <div style="flex-grow: 1">Proposed Budget: ฿89,700</div>
-                    <div style="flex-grow: 3">Approved Budget: ฿74,920</div>
-                    <div style="flex-grow: 5">
-                        <div style="float: right">
-                            <img src="~/img/ic_edit.png" width="26" height="26" /> Edit
-                            <img src="~/img/ic_delete.png" width="26" height="26" /> Delete
+<div>
+    @foreach (Project project in projects)
+    {
+        <a asp-controller="Projects" asp-action="Details" asp-route-id="@project.activityInformation.activityId" style="text-decoration: none; color: inherit">
+            <div asp-controller="Projects" asp-action="Details" asp-route-id="1" style="text-decoration: none; color: inherit">
+                <div class="card" style="margin-top: 16px">
+                    <div class="card-container">
+                        <div class="flex-container">
+                            <div style="flex-grow: 1">
+                                <span class="ongoing-dot"></span> <b>@project.activityInformation.referenceNumber</b> @project.activityInformation.activityName
+                            </div>
+                            <div style="flex-grow: 3">
+                                <h6 style="text-align: right">PROPOSED ON: 1 April 2019</h6>
+                            </div>
+                        </div>
+                        @{
+                            var totalProposedDouble = 0.0;
+                            var totalApprovedDouble = 0.0;
+                            foreach (var budget in project.budgets)
+                            {
+                                if (budget.budgetStatusId == 1)
+                                {
+                                    totalProposedDouble += budget.amount;
+                                }
+                                else if (budget.budgetStatusId == 2)
+                                {
+                                    totalApprovedDouble += budget.amount;
+                                }
+                            }
+
+                            var totalApprovedString = "";
+                            if (totalApprovedDouble < 1)
+                            {
+                                totalApprovedString = "Pending";
+                            }
+                            else
+                            {
+                                totalApprovedString = "฿" + totalProposedDouble.ToString("N");
+                            }
+                        }
+                        <div class="flex-container" style="margin-top: 16px">
+                            <div style="flex-grow: 1">Proposed Budget: ฿@totalProposedDouble.ToString("N")</div>
+                            <div style="flex-grow: 20">Approved Budget: @totalApprovedString</div>
+                            <div style="flex-grow: 1">
+                                @* <div style="float: right"> *@
+                                <object><a asp-controller="Projects" asp-action="Edit" asp-route-id="@project.activityInformation.activityId" style="text-decoration: none; color: inherit"><img src="~/img/ic_edit.png" width="26" height="26" /> Edit</a></object>
+                                <object style="margin-left: 16px"><a asp-controller="Projects" asp-action="Delete" asp-route-id="@project.activityInformation.activityId" style="text-decoration: none; color: inherit"><img src="~/img/ic_delete.png" width="26" height="26" /> Delete</a></object>
+                                @* </div> *@
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</a>
+        </a>
+    }
+</div>
+
 
 <div class="flex-container" style="margin-top: 30px">
-    <div style="flex-grow: 1"><a class="ongoing-dot"></a>	&nbsp; ONGOING PROJECT</div>
-    <div style="flex-grow: 1"><a class="complete-dot"></a>	&nbsp; COMPLETED PROJECT</div>
-    <div style="flex-grow: 1"><a class="rejected-dot"></a>	&nbsp; REJECTED PROJECT</div>
+    <div style="flex-grow: 1"><a class="ongoing-dot"></a> &nbsp; ONGOING PROJECT</div>
+    <div style="flex-grow: 1"><a class="complete-dot"></a> &nbsp; COMPLETED PROJECT</div>
+    <div style="flex-grow: 1"><a class="rejected-dot"></a> &nbsp; REJECTED PROJECT</div>
     <div style="flex-grow: 20"></div>
 </div>

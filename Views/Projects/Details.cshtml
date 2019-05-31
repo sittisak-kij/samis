@@ -1,42 +1,45 @@
 ﻿@model samis.Models.ActivityInformation
 
 @{
-ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details";
+    Project project = ViewBag.Project;
+    List<BudgetProject> budgetProjects = ViewBag.BudgetProjects;
+    List<String> totalAmout = ViewBag.TotalAmount;
 }
 
 <div class="flex-container">
     <div style="flex-grow: 1">
-        <h3><b>GRADUATING STUDENT ORIENTATION</b></h3>
+        <h3><b>@project.activityInformation.activityName</b></h3>
     </div>
     <div style="flex-grow: 1">
-        <h6 style="text-align: right">S2019090096</h6>
+        <h6 style="text-align: right">@project.activityInformation.referenceNumber</h6>
     </div>
 </div>
 
 <table style="width: 100%; margin-top: 16px">
     <tr>
         <td><b>Project Type: </b></td>
-        <td>Ideal Graduate-Entrepreneurial Spirit</td>
+        <td>@project.activityInformation.activityType.activityTypeName</td>
         <td><b>Semester: </b></td>
-        <td>2 / 2018</td>
+        <td>@project.activityInformation.semester / @project.activityInformation.year</td>
     </tr>
     <tr>
         <td><b>Project Level: </b></td>
-        <td>Instiltutional</td>
+        <td>@project.activityInformation.projectLevel.name</td>
         <td><b>Started Date: </b></td>
-        <td>24 April 2019</td>
+        <td>@project.activityInformation.startDate?.ToString("dd MMMM yyyy")</td>
     </tr>
     <tr>
         <td><b>Venue: </b></td>
-        <td>VMS 0101 (On Campus)</td>
+        <td>@project.activityInformation.venue</td>
         <td><b>Ended Date: </b></td>
-        <td>24 April 2019</td>
+        <td>@project.activityInformation.endDate?.ToString("dd MMMM yyyy")</td>
     </tr>
     <tr>
         <td><b>Advisor: </b></td>
-        <td>A.Sakhon Ounla</td>
+        <td>@project.activityInformation.advisor.name</td>
         <td><b>Participants: </b></td>
-        <td>50 Persons</td>
+        <td>@project.activityInformation.participant Persons</td>
     </tr>
 </table>
 
@@ -48,21 +51,17 @@ ViewData["Title"] = "Details";
         <th style="text-align: center">PROPOSED</th>
         <th style="text-align: center">APPROVED</th>
     </tr>
-    <tr>
-        <td>AUSO Support</td>
-        <td style="text-align: center">฿61,560</td>
-        <td style="text-align: center">฿43,500</td>
-    </tr>
-    <tr>
-        <td>Other Income</td>
-        <td style="text-align: center">฿5,640</td>
-        <td style="text-align: center">฿8,290</td>
-    </tr>
-    <tr>
-        <td>Participant Support</td>
-        <td style="text-align: center">฿22,500</td>
-        <td style="text-align: center">฿22,500</td>
-    </tr>
+    @foreach (var budgetProject in budgetProjects)
+    {
+        if (budgetProject.budgetTypeId == 1)
+        {
+            <tr>
+                <td>@budgetProject.budgetName</td>
+                <td style="text-align: center">@budgetProject.proposed</td>
+                <td style="text-align: center">@budgetProject.approved</td>
+            </tr>
+        }
+    }
     <tr>
         <td></td>
         <td style="text-align: center">
@@ -74,8 +73,8 @@ ViewData["Title"] = "Details";
     </tr>
     <tr>
         <td style="text-align: right">TOTAL:</td>
-        <td style="text-align: center">฿89,700</td>
-        <td style="text-align: center">฿74,920</td>
+        <td style="text-align: center">@totalAmout[0]</td>
+        <td style="text-align: center">@totalAmout[2]</td>
     </tr>
 </table>
 
@@ -87,21 +86,17 @@ ViewData["Title"] = "Details";
         <th style="text-align: center;">PROPOSED</th>
         <th style="text-align: center">APPROVED</th>
     </tr>
-    <tr>
-        <td>Accommodation, Seminar Room & Fee(s) </td>
-        <td style="text-align: center">฿61,560</td>
-        <td style="text-align: center">฿43,500</td>
-    </tr>
-    <tr>
-        <td>Transportation</td>
-        <td style="text-align: center">฿5,640</td>
-        <td style="text-align: center">฿8,290</td>
-    </tr>
-    <tr>
-        <td>Miscellaneous</td>
-        <td style="text-align: center">฿22,500</td>
-        <td style="text-align: center">฿22,500</td>
-    </tr>
+    @foreach (var budgetProject in budgetProjects)
+    {
+        if (budgetProject.budgetTypeId == 2)
+        {
+            <tr>
+                <td>@budgetProject.budgetName</td>
+                <td style="text-align: center">@budgetProject.proposed</td>
+                <td style="text-align: center">@budgetProject.approved</td>
+            </tr>
+        }
+    }
     <tr>
         <td></td>
         <td style="text-align: center">
@@ -113,7 +108,7 @@ ViewData["Title"] = "Details";
     </tr>
     <tr>
         <td style="text-align: right">TOTAL:</td>
-        <td style="text-align: center">฿89,700</td>
-        <td style="text-align: center">฿74,920</td>
+        <td style="text-align: center">@totalAmout[1]</td>
+        <td style="text-align: center">@totalAmout[3]</td>
     </tr>
 </table>
