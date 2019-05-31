@@ -1,0 +1,207 @@
+﻿@model samis.Models.Project
+
+@{
+    ViewData["Title"] = "Budget Manager";
+    Project project = ViewBag.Project;
+    List<BudgetProject> budgetProjects = ViewBag.BudgetProjects;
+    List<String> totalAmout = ViewBag.TotalAmount;
+    var i = 1;
+    var j = 1;
+}
+
+<div class="flex-container">
+    <div style="flex-grow: 1">
+        <h3><b>@project.activityInformation.activityName</b></h3>
+    </div>
+    <div style="flex-grow: 1">
+        <h6 style="text-align: right">@project.activityInformation.referenceNumber</h6>
+    </div>
+</div>
+<form asp-action="BudgetManager" onsubmit="setAllBudgetInList()">
+    <table style="width: 100%; margin-top: 16px">
+        <tr>
+            <td><b>Project Type: </b></td>
+            <td>@project.activityInformation.activityType.activityTypeName</td>
+            <td><b>Semester: </b></td>
+            <td>@project.activityInformation.semester / @project.activityInformation.year</td>
+        </tr>
+        <tr>
+            <td><b>Project Level: </b></td>
+            <td>@project.activityInformation.projectLevel.name</td>
+            <td><b>Started Date: </b></td>
+            <td>@project.activityInformation.startDate?.ToString("dd MMMM yyyy")</td>
+        </tr>
+        <tr>
+            <td><b>Venue: </b></td>
+            <td>@project.activityInformation.venue</td>
+            <td><b>Ended Date: </b></td>
+            <td>@project.activityInformation.endDate?.ToString("dd MMMM yyyy")</td>
+        </tr>
+        <tr>
+            <td><b>Advisor: </b></td>
+            <td>@project.activityInformation.advisor.name</td>
+            <td><b>Participants: </b></td>
+            <td>@project.activityInformation.participant Persons</td>
+        </tr>
+    </table>
+
+    <table id="revenueTable" style="width: 100%; margin-top: 32px">
+        <tr>
+            <th style="width: 60%">
+                <h4><b>REVENUES</b></h4>
+            </th>
+            <th style="text-align: center">PROPOSED</th>
+            <th style="text-align: center">APPROVED</th>
+        </tr>
+        @foreach (var budgetProject in budgetProjects)
+        {
+            if (budgetProject.budgetTypeId == 1)
+            {
+                var id = "tridRevenue" + i;
+                <tr id="@id">
+                    <td><span id="@budgetProject.budgetDescriptionId">@budgetProject.budgetName</span></td>
+                    <td style="text-align: center">@budgetProject.proposed</td>
+                    <td style="text-align: center">
+                        <input onkeyup="calculateRevenue()" class="form-control" type="number" min="1" max="9999999" id="demo" />
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+        <tr>
+            <td></td>
+            <td style="text-align: center">
+                <hr />
+            </td>
+            <td style="text-align: center">
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right">TOTAL:</td>
+            <td style="text-align: center">@totalAmout[0]</td>
+            <td style="text-align: center"><text id="totalRevenue">@totalAmout[2]</text></td>
+        </tr>
+    </table>
+
+    <table id="expenseTable" style="width: 100%; margin-top: 32px">
+        <tr>
+            <th style="width: 60%">
+                <h4><b>EXPENSES</b></h4>
+            </th>
+            <th style="text-align: center;">PROPOSED</th>
+            <th style="text-align: center">APPROVED</th>
+        </tr>
+        @foreach (var budgetProject in budgetProjects)
+        {
+            if (budgetProject.budgetTypeId == 2)
+            {
+                var id = "tridExpense" + j;
+                <tr id="@id">
+                    <td><span id="@budgetProject.budgetDescriptionId">@budgetProject.budgetName</span></td>
+                    <td style="text-align: center">@budgetProject.proposed</td>
+                    <td style="text-align: center">
+                        <input onkeyup="calculateExpense()" class="form-control" type="number" min="1" max="9999999" id="demo" />
+                    </td>
+                </tr>
+                j++;
+            }
+        }
+        <tr>
+            <td></td>
+            <td style="text-align: center">
+                <hr />
+            </td>
+            <td style="text-align: center">
+                <hr />
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right">TOTAL:</td>
+            <td style="text-align: center">@totalAmout[1]</td>
+            <td style="text-align: center"><text id="totalExpense">@totalAmout[3]</text></td>
+        </tr>
+    </table>
+    <input asp-for="budgets" type="hidden" id="budgets" />
+    <input class="btn btn-info" type="submit" style="width: 100%; color: white; margin-top: 32px"
+           value="SUBMIT BUDGET" />
+</form>
+
+<script>
+        function calculateRevenue() {
+            var revenueAmount = document.getElementById('revenueTable').getElementsByTagName('input');
+            var total = 0;
+
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                var raint = parseFloat(ra);
+                total += raint || 0;
+            }
+
+            document.getElementById('totalRevenue').innerHTML = "฿" + total.toLocaleString();
+        }
+
+        function calculateExpense() {
+            var revenueAmount = document.getElementById('expenseTable').getElementsByTagName('input');
+            var total = 0;
+
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                var raint = parseFloat(ra);
+                total += raint || 0;
+            }
+
+            document.getElementById('totalExpense').innerHTML = "฿" + total.toLocaleString();
+        }
+
+        function setAllBudgetInList() {
+            var revenueAmount = document.getElementById('revenueTable').getElementsByTagName('input');
+            var expenseAmount = document.getElementById('expenseTable').getElementsByTagName('input');
+            var revenueTitle = document.getElementById('revenueTable').getElementsByTagName('span');
+            var expenseTitle = document.getElementById('expenseTable').getElementsByTagName('span');
+            var ras = [];
+            var eas = [];
+            var rts = [];
+            var ets = [];
+            for (var i = 0; i < revenueAmount.length; i++) {
+                var ra = revenueAmount[i].value;
+                ras.push(ra);
+            }
+            for (var j = 0; j < expenseAmount.length; j++) {
+                var ea = expenseAmount[j].value;
+                eas.push(ea);
+            }
+            for (var k = 0; k < revenueTitle.length; k++) {
+                var rt = revenueTitle[k].id;
+                rts.push(rt);
+            }
+            for (var l = 0; l < expenseTitle.length; l++) {
+                var et = expenseTitle[l].id;
+                ets.push(et);
+            }
+
+            var budgets = [];
+
+            for (var m = 0; m < ras.length; m++) {
+                var revenue = {
+                    activityId: @project.activityInformation.activityId,
+                    budgetStatusId: 2,
+                    amount: ras[m],
+                    budgetDescriptionId: rts[m]
+                }
+                budgets.push(revenue);
+            }
+
+            for (var n = 0; n < eas.length; n++) {
+                var expense = {
+                    activityId: @project.activityInformation.activityId,
+                    budgetStatusId: 2,
+                    amount: eas[n],
+                    budgetDescriptionId: ets[n]
+                }
+                budgets.push(expense);
+            }
+
+            document.getElementById('budgets').value = JSON.stringify(budgets);
+        }
+</script>

@@ -178,3 +178,5 @@ G:\samis\obj\Debug\netcoreapp2.2\samis.dll
 G:\samis\obj\Debug\netcoreapp2.2\samis.pdb
 G:\samis\obj\Debug\netcoreapp2.2\samis.csproj.CopyComplete
 G:\samis\obj\Debug\netcoreapp2.2\samis.csprojAssemblyReference.cache
+G:\samis\obj\Debug\netcoreapp2.2\Razor\Views\Admin\Projects.g.cshtml.cs
+G:\samis\obj\Debug\netcoreapp2.2\Razor\Views\Admin\BudgetManager.g.cshtml.cs

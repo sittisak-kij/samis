@@ -33,10 +33,14 @@ namespace samis.Controllers
                 var project = new Project();
                 project.activityInformation = activity;
                 project.budgets = budgets.ToList();
+                foreach (var b in project.budgets)
+                {
+                    b.budgetDescription = _context.BudgetDescription.SingleOrDefault(x => x.budgetDescriptionId == b.budgetDescriptionId);
+                }
                 projects.Add(project);
             }
 
-            ViewBag.Projects = projects;
+            ViewBag.Projects = projects.OrderByDescending(x => x.activityInformation.timestamp.TimeOfDay).ThenBy(x => x.activityInformation.timestamp.Date).ThenBy(x => x.activityInformation.timestamp.Year);
 
             return View();
         }
@@ -78,13 +82,12 @@ namespace samis.Controllers
             {
                 if (budgetProjects.Any(x => x.budgetName == budget.budgetDescription.name))
                 {
-                    if (budget.budgetStatusId == 1)
+                    foreach (var b in budgetProjects)
                     {
-                        budgetProjects[i].proposed = "฿" + budget.amount.ToString("N");
-                    }
-                    else if (budget.budgetStatusId == 2)
-                    {
-                        budgetProjects[i].approved = "฿" + budget.amount.ToString("N");
+                        if (b.budgetName == budget.budgetDescription.name)
+                        {
+                            b.approved = "฿" + budget.amount.ToString("N");
+                        }
                     }
                 }
                 else
@@ -94,7 +97,8 @@ namespace samis.Controllers
                         budgetName = budget.budgetDescription.name,
                         proposed = "Pending",
                         approved = "Pending",
-                        budgetTypeId = budget.budgetDescription.budgetTypeId
+                        budgetTypeId = budget.budgetDescription.budgetTypeId,
+                        budgetDescriptionId = budget.budgetDescriptionId
                     };
                     if (budget.budgetStatusId == 1)
                     {
@@ -247,14 +251,21 @@ namespace samis.Controllers
             {
                 if (budgetProjects.Any(x => x.budgetName == budget.budgetDescription.name))
                 {
-                    if (budget.budgetStatusId == 1)
+                    foreach (var b in budgetProjects)
                     {
-                        budgetProjects[i].proposed = "฿" + budget.amount.ToString("N");
+                        if (b.budgetName == budget.budgetDescription.name)
+                        {
+                            b.approved = "฿" + budget.amount.ToString("N");
+                        }
                     }
-                    else if (budget.budgetStatusId == 2)
-                    {
-                        budgetProjects[i].approved = "฿" + budget.amount.ToString("N");
-                    }
+                    //                    if (budget.budgetStatusId == 1)
+                    //                    {
+                    //                        budgetProjects[i].proposed = "฿" + budget.amount.ToString("N");
+                    //                    }
+                    //                    else if (budget.budgetStatusId == 2)
+                    //                    {
+                    //                        budgetProjects[i].approved = "฿" + budget.amount.ToString("N");
+                    //                    }
                 }
                 else
                 {

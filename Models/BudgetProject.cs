@@ -11,5 +11,6 @@ namespace samis.Models
         public string proposed { get; set; }
         public string approved { get; set; }
         public int budgetTypeId { get; set; }
+        public int budgetDescriptionId { get; set; }
     }
 }
