@@ -15,6 +15,16 @@ Not inclded:
 Bugs:
 - Budgets total amount calculation
 
+Most of the woking codes are in:
+```bash
+./Controller/ProjectController.cs
+./Views/Projects/
+
+./Controller/AdminController.cs
+./Views/Admin/BudgetManager.cshtml
+./Views/Admin/Projects.cshtml
+```
+
 FYI: You may use MySQL dumps file available in ./sqldumps to restore database
 
 ## Developed by
