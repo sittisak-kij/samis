@@ -15,6 +15,7 @@ Not inclded:
 Bugs:
 - Budgets total amount calculation
 
-Developed by: Sittisak T. 5813526
-
 FYI: You may use MySQL dumps file available in ./sqldumps to restore database
+
+## Developed by
+Sittisak T. // Student id: 5813526
